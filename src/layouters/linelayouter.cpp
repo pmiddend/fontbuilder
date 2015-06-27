@@ -43,8 +43,11 @@ void LineLayouter::PlaceImages(const QVector<LayoutChar>& chars) {
     if (chars.isEmpty()) return;
     int min_y = chars.front().y;
     int max_y = chars.front().y + chars.front().h;
+    int maxw = -1;
+    foreach (const LayoutChar& c, chars)
+	maxw = std::max(c.w,maxw);
     foreach (const LayoutChar& c, chars) {
-        w+=c.w;
+        w+=maxw;
         if (c.y<min_y)
             min_y = c.y;
         if ((c.y+c.h)>max_y)
