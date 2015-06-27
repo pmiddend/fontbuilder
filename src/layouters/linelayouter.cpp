@@ -61,7 +61,7 @@ void LineLayouter::PlaceImages(const QVector<LayoutChar>& chars) {
         l.x = x;
         l.y = (c.y-min_y);
         place(l);
-        x+=c.w;
+        x+=maxw;
     }
 }
 
